@@ -88,7 +88,6 @@ ORDER BY Count DESC;
 |Raspberry Pi Model B Rev 1|1
 |Raspberry Pi Zero Rev 1.2|1
 |Raspberry Pi Model A Rev 2|1
-||25
 
 # Still To Do:
 - [x] Extra columns to detect duplications
