@@ -22,8 +22,8 @@ class getData():
         try:
             f = open("/proc/cpuinfo",'r')
             for line in f:
-                if line[0:6]=="Serial":
-                    cpuserial = line[10:26]
+                if line.startswith("Serial"):
+                    cpuserial = line.rsplit(": ")[1]
             f.close()
         except:
             cpuserial = "ERROR00000000"
@@ -33,44 +33,44 @@ class getData():
 
     def getModel(self):
         # Extract model from cpuinfo file
-        model = "Unknown Pi"
+        model = "Unknown Model"
         try:
             f = open("/proc/cpuinfo",'r')
             for line in f:
-                if line[0:5]=="Model":
-                    model = line[9:44]
+                if line.startswith("Model"):
+                    model = line.rsplit(": ")[1]
             f.close()
         except:
-            model = "Error Pi"
+            model = "Model Error"
 
         return model.strip()
 
 
     def getHardware(self):
         # Extract model from cpuinfo file
-        hardware = "Unknown Pi"
+        hardware = "Unknown Hardware"
         try:
             f = open("/proc/cpuinfo",'r')
             for line in f:
-                if line[0:8]=='Hardware':
-                    hardware = line[11:18]
+                if line.startswith("Hardware"):
+                    hardware = line.rsplit(": ")[1]
             f.close()
         except:
-            hardware = "Error Pi"
+            hardware = "Hardware Error"
 
         return hardware.strip()
 
     def getRevision(self):
         # Extract model from cpuinfo file
-        revision = "Unknown Pi"
+        revision = "Unknown Revision"
         try:
             f = open("/proc/cpuinfo",'r')
             for line in f:
-                if line[0:8]=='Revision':
-                    revision = line[11:17]
+                if line.startswith("Revision"):
+                    revision = line.rsplit(": ")[1]
             f.close()
         except:
-            revision = "Error Pi"
+            revision = "Revision Error"
 
         return revision.strip()
 
